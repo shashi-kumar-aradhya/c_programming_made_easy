@@ -1,4 +1,4 @@
-/*  Bubble sort
+/*  Insertion sort
     Worst case : n^2 comparisons, n^2 swaps
     best case  : n comparisons, 1 swap
     average case : n^2 comparisons, n^2 swaps
@@ -7,37 +7,34 @@
 #include <stdio.h>
 
 #ifndef MAX
-#define MAX 10
+#define MAX 5
 #endif
 
 void swap(int a[], int i, int j);
 
 int main()
 {
-	int arr[MAX] = {0};
+	int arr[MAX] = {5,4,6,2,3};
 	int i = 0, j = 0;
-	int comp = 0;
-	int flag = 1;	//True, we assume swap is required
-	printf("Enter the array elements : ");
-	for(i = 0; i < MAX; i++)
-		scanf("%d", &arr[i]);
+	int temp= 0;
+//	printf("Enter the array elements : ");
+//	for(i = 0; i < MAX; i++)
+//		scanf("%d", &arr[i]);
 
 	printf("\nUnsorted array : ");
 	for(i = 0; i < MAX; i++)
 		printf("%d\t", arr[i]);
 
-	for(i = 0; i < MAX && flag; i++) {
-		flag = 0;		//False, we assume swap is not required
-	   for(j = 0; j < MAX-i-1; j++) {
-		comp++;
-	      if( arr[j] > arr[j+1]) {
-		flag = 1;		//If swap is required, we need to continue one more iteration
-		swap(arr, j, j+1);
-	      }
+	for (i = 1; i < MAX; i++) {
+	    temp = arr[i];
+	    j = i-1;
+	    while(j >= 0 && arr[j] > temp) {
+		arr[j+1] = arr[j];
+		j--;
 	   }
-	}
+	   arr[j+1] = temp;
+	}	
 
-	printf("comparision = %d\n", comp);
 	printf("\nSorted array : ");
 	for(i = 0; i < MAX; i++)
 		printf("%d\t", arr[i]);

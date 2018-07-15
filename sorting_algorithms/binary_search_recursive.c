@@ -48,10 +48,5 @@ int binary_search(int arr[], int low, int high, int search_value)
 		low = mid + 1;
 	else
 		high = mid - 1;
-<<<<<<< HEAD
 	return binary_search(arr, low, high, search_value);
-=======
-	binary_search(arr, low, high, search_value);
->>>>>>> f95855fc4b5350770d3beb09869ed8c85f4e07fc
-//	return -1;
 }
